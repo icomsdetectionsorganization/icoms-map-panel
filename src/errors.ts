@@ -58,7 +58,7 @@ export class ErrorManager {
 
   reset(...domains: string[]) {
     const _this = this;
-    domains.forEach(domain => {
+    domains.forEach((domain) => {
       _this.storage[domain] = [] as ErrorItem[];
     });
   }
@@ -73,8 +73,8 @@ export class ErrorManager {
      */
     const _this = this;
     const errors: ErrorItem[] = [];
-    this.domains.forEach(domain => {
-      _this.storage[domain].forEach(error => {
+    this.domains.forEach((domain) => {
+      _this.storage[domain].forEach((error) => {
         error.location = domain;
         errors.push(error);
       });
@@ -87,7 +87,7 @@ export class ErrorManager {
      * Get formatted error messages for all application domains.
      */
     const messages: string[] = [];
-    this.getAll().forEach(item => {
+    this.getAll().forEach((item) => {
       const suffix = item.name && item.name !== 'Error' ? ` (${item.name})` : '';
       const message = `- ${item.message}${suffix}`;
       messages.push(message);

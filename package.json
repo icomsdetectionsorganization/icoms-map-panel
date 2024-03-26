@@ -1,6 +1,6 @@
 {
-  "name": "@icomsdetections/map-panel",
-  "version": "0.16.0",
+  "name": "icoms-map-panel",
+  "version": "0.17.0",
   "description": "Icoms Detections Map Panel",
   "scripts": {
     "build": "grafana-toolkit plugin:build",

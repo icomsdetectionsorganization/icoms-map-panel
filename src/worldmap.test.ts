@@ -29,10 +29,7 @@ describe('Worldmap', () => {
 
   describe('when the data has one point', () => {
     beforeEach(() => {
-      ctrl.data = new DataBuilder()
-        .withCountryAndValue('SE', 1)
-        .withDataRange(1, 1, 0)
-        .build();
+      ctrl.data = new DataBuilder().withCountryAndValue('SE', 1).withDataRange(1, 1, 0).build();
       ctrl.panel.circleMaxSize = '10';
       worldMap.drawCircles();
     });
@@ -497,10 +494,7 @@ describe('Worldmap', () => {
 
   describe('when the data has two points at the same spot', () => {
     beforeEach(() => {
-      ctrl.data = new DataBuilder()
-        .withCountryAndValue('SE', 1)
-        .withCountryAndValue('SE', 2)
-        .build();
+      ctrl.data = new DataBuilder().withCountryAndValue('SE', 1).withCountryAndValue('SE', 2).build();
       worldMap.drawCircles();
     });
 
@@ -515,10 +509,7 @@ describe('Worldmap', () => {
 
   describe('when the data is updated with two points at the same spot', () => {
     beforeEach(() => {
-      ctrl.data = new DataBuilder()
-        .withCountryAndValue('SE', 1)
-        .withCountryAndValue('IE', 1)
-        .build();
+      ctrl.data = new DataBuilder().withCountryAndValue('SE', 1).withCountryAndValue('IE', 1).build();
       worldMap.drawCircles();
 
       ctrl.data = new DataBuilder()
@@ -655,7 +646,7 @@ describe('ClickthroughLinks', () => {
   // https://github.com/grafana/grafana/blob/v6.5.2/public/app/plugins/datasource/loki/datasource.test.ts#L28-L31
   // https://github.com/grafana/grafana/blob/v6.5.2/public/app/features/templating/template_srv.ts#L261
   const variableRegex = /\$(\w+)|\[\[([\s\S]+?)(?::(\w+))?\]\]|\${(\w+)(?:\.([^:^\}]+))?(?::(\w+))?}/g;
-  const templateSrvMock = ({
+  const templateSrvMock = {
     getAdhocFilters: (): any[] => [],
     replace: (target: any, scopedVars?: any, format?: any) => {
       return target.replace(variableRegex, (match, var1, var2, fmt2, var3, fieldPath, fmt3) => {
@@ -668,7 +659,7 @@ describe('ClickthroughLinks', () => {
         }
       });
     },
-  } as unknown) as TemplateSrv;
+  } as unknown as TemplateSrv;
 
   beforeEach(() => {
     worldMap = createBasicMap();

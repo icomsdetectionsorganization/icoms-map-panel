@@ -380,7 +380,7 @@ export default class WorldmapCtrl extends MetricsPanelCtrl {
 
   updateThresholdData() {
     // FIXME: Isn't `this.data` actually an array?
-    this.data.thresholds = this.settings.thresholds.split(',').map(strValue => {
+    this.data.thresholds = this.settings.thresholds.split(',').map((strValue) => {
       return Number(strValue.trim());
     });
     this.adjustColorCount(this.data.thresholds);

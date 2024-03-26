@@ -1,13 +1,12 @@
 {
   "type": "panel",
-  "name": "Panodata Map Panel",
-  "id": "panodata-map-panel",
-
+  "name": "Icoms Detections Map Panel",
+  "id": "icoms-map-panel",
   "info": {
-    "description": "Panodata Map Panel, a descendant of the original Grafana Worldmap Panel. Displays time series data or geohash data on a world map.",
+    "description": "Icoms Detections Map Panel, a descendant of the original Grafana Worldmap Panel. Displays time series data or geohash data on a world map.",
     "author": {
-      "name": "Grafana Labs, The Panodata Developers",
-      "url": "https://grafana.com"
+      "name": "Embie",
+      "url": "https://embie.be"
     },
     "keywords": ["grafana", "map", "panel", "plugin", "worldmap", "leaflet"],
     "logos": {
@@ -15,14 +14,13 @@
       "large": "images/worldmap_logo.svg"
     },
     "links": [
-      {"name": "Website", "url": "https://community.panodata.org/t/panodata-map-panel-for-grafana/121"},
-      {"name": "GitHub", "url": "https://github.com/panodata/panodata-map-panel"},
-      {"name": "License", "url": "https://github.com/panodata/panodata-map-panel/blob/main/LICENSE"}
+      { "name": "Website", "url": "https://www.icomsdetections.com" },
+      { "name": "GitHub", "url": "https://github.com/icomsdetectionsorganization" }
     ],
     "screenshots": [
-      {"name": "World", "path": "images/worldmap-world.png"},
-      {"name": "USA", "path": "images/worldmap-usa.png"},
-      {"name": "Light Theme", "path": "images/worldmap-light-theme.png"}
+      { "name": "World", "path": "images/worldmap-world.png" },
+      { "name": "USA", "path": "images/worldmap-usa.png" },
+      { "name": "Light Theme", "path": "images/worldmap-light-theme.png" }
     ],
     "version": "%VERSION%",
     "updated": "%TODAY%"
@@ -31,6 +29,6 @@
   "dependencies": {
     "grafanaVersion": ">=6.0.0",
     "grafanaDependency": ">=6.0.0",
-    "plugins": [ ]
+    "plugins": []
   }
 }

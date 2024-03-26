@@ -171,11 +171,11 @@ export default class WorldMap {
     const latRange = this.ctrl.settings.overlayRangeLatitude
         .split(',')
         .slice(0, 2)
-        .map(x => Number(x)),
+        .map((x) => Number(x)),
       lngRange = this.ctrl.settings.overlayRangeLongitude
         .split(',')
         .slice(0, 2)
-        .map(x => Number(x));
+        .map((x) => Number(x));
     var imageBounds = [
       [latRange[0], lngRange[0]],
       [latRange[1], lngRange[1]],
@@ -204,7 +204,7 @@ export default class WorldMap {
 
   filterEmptyAndZeroValues(data) {
     const countBefore = data.length;
-    data = _.filter(data, o => {
+    data = _.filter(data, (o) => {
       return !(this.ctrl.settings.hideEmpty && _.isNil(o.value)) && !(this.ctrl.settings.hideZero && o.value === 0);
     });
     const countAfter = data.length;
@@ -239,7 +239,7 @@ export default class WorldMap {
     console.log('createCircles: begin');
     const circles: any[] = [];
     const circlesByKey = {};
-    data.forEach(dataPoint => {
+    data.forEach((dataPoint) => {
       // Todo: Review: Is a "locationName" really required
       //       just for displaying a circle on a map?
       if (!dataPoint.locationName) {
@@ -265,7 +265,7 @@ export default class WorldMap {
 
   updateCircles(data) {
     const circlesByKey = {};
-    data.forEach(dataPoint => {
+    data.forEach((dataPoint) => {
       // Todo: Review: Is a "locationName" really required
       //       just for displaying a circle on a map?
       if (!dataPoint.locationName) {
@@ -305,7 +305,7 @@ export default class WorldMap {
 
   updateCircle(dataPoint) {
     // Find back circle object by data point key.
-    const circle = _.find(this.circles, cir => {
+    const circle = _.find(this.circles, (cir) => {
       return cir.options.location === dataPoint.key;
     });
 
@@ -384,7 +384,7 @@ export default class WorldMap {
     // Attach "onclick" event to data point linking.
     if (linkUrl) {
       const clickthroughOptions = this.ctrl.settings.clickthroughOptions;
-      circle.on('click', evt => {
+      circle.on('click', (evt) => {
         if (clickthroughOptions && clickthroughOptions.windowName) {
           window.open(linkUrl, clickthroughOptions.windowName);
         } else {
@@ -403,7 +403,7 @@ export default class WorldMap {
       autoWidth: this.ctrl.settings.autoWidthLabels,
     });
 
-    circle.on('mouseover', evt => {
+    circle.on('mouseover', (evt) => {
       const layer = evt.target;
       layer.bringToFront();
       circle.openPopup();

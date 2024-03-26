@@ -88,10 +88,10 @@ export default class DataFormatter {
       let highestValue = 0;
       let lowestValue = Number.MAX_VALUE;
 
-      seriesData.forEach(serie => {
+      seriesData.forEach((serie) => {
         const lastPoint = _.last(serie.datapoints);
         const lastValue = _.isArray(lastPoint) ? lastPoint[0] : null;
-        const location = _.find(this.ctrl.locations, loc => {
+        const location = _.find(this.ctrl.locations, (loc) => {
           return loc.key.toUpperCase() === serie.alias.toUpperCase();
         });
 
@@ -195,7 +195,7 @@ export default class DataFormatter {
       let highestValue = 0;
       let lowestValue = Number.MAX_VALUE;
 
-      dataList.forEach(result => {
+      dataList.forEach((result) => {
         // Process table format data.
         if (result.type === 'table') {
           const geoHashField = this.settings.esGeoPoint;
@@ -211,7 +211,7 @@ export default class DataFormatter {
             columnNames[column.text] = columnIndex;
           });
 
-          result.rows.forEach(row => {
+          result.rows.forEach((row) => {
             const encodedGeohash = row[columnNames[geoHashField]];
 
             // Safely decode the geohash value.
@@ -259,7 +259,7 @@ export default class DataFormatter {
 
           // Process timeseries format data.
         } else {
-          result.datapoints.forEach(datapoint => {
+          result.datapoints.forEach((datapoint) => {
             const encodedGeohash = datapoint[this.settings.esGeoPoint];
 
             // Safely decode the geohash value.
@@ -319,7 +319,7 @@ export default class DataFormatter {
         columnNames[columnIndex] = column.text;
       });
 
-      tableData.rows.forEach(row => {
+      tableData.rows.forEach((row) => {
         const datapoint = {};
 
         row.forEach((value, columnIndex) => {
@@ -341,7 +341,7 @@ export default class DataFormatter {
 
       // Todo: Using hardcoded `tableData[0]` means
       //  this will only use the first active query?
-      tableData[0].forEach(datapoint => {
+      tableData[0].forEach((datapoint) => {
         let key;
         let longitude;
         let latitude;
@@ -378,7 +378,7 @@ export default class DataFormatter {
 
         // For improved labelling, attempt to resolve value from table's "labelLocationKeyField" against JSON location key.
         const labelJsonKey = datapoint[this.settings.tableQueryOptions.labelLocationKeyField];
-        const location = _.find(this.ctrl.locations, loc => {
+        const location = _.find(this.ctrl.locations, (loc) => {
           return loc.key === labelJsonKey;
         });
 
@@ -436,9 +436,9 @@ export default class DataFormatter {
 
   setJsonValues(series, data) {
     if (series && series.length > 0) {
-      series.forEach(serie => {
+      series.forEach((serie) => {
         if (serie.datapoints && serie.datapoints.length > 0) {
-          serie.datapoints.forEach(point => {
+          serie.datapoints.forEach((point) => {
             // Todo: Bring this up to speed with the current state in `setTableValues`.
             data.push(this.createDataValueFromPoint(point));
           });
@@ -455,7 +455,7 @@ export default class DataFormatter {
   }
 
   computeValueRange(data) {
-    const sortedValues = data.map(datapoint => {
+    const sortedValues = data.map((datapoint) => {
       return datapoint.value;
     });
 
