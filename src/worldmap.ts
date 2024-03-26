@@ -2,6 +2,8 @@ import * as _ from 'lodash';
 import $ from 'jquery';
 import './libs/leaflet_plus';
 import * as L from 'leaflet';
+import 'leaflet.markercluster';
+import 'leaflet.markercluster/dist/MarkerCluster.default.css';
 import WorldmapCtrl from './worldmap_ctrl';
 import { ColorModes } from './model';
 
@@ -547,7 +549,13 @@ export default class WorldMap {
   addCircles(circles) {
     // Todo: Optionally add fixed custom attributions to the circle layer.
     const attribution = undefined;
-    return (window as any).L.layerGroup(circles, { attribution: attribution }).addTo(this.map);
+    const clusterGroup = (window as any).L.markerClusterGroup({
+      showCoverageOnHover: false,
+      zoomToBoundsOnClick: true,
+      animate: true,
+    });
+    clusterGroup.addLayers(circles, { attribution: attribution });
+    return clusterGroup.addTo(this.map);
   }
 
   removeCircles() {
